@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Plan - AI Fitness Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Your Fitness Plan ✏️</h1>
+        <p class="text-center">Modify the details and regenerate your personalized plan.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form id="planForm" action="{{ url_for('edit_plan', plan_id=plan.id) }}" method="post">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="12" max="100" value="{{ plan.age }}" required>
+                <span class="error-message" id="age-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male" {% if plan.gender == 'male' %}selected{% endif %}>Male</option>
+                    <option value="female" {% if plan.gender == 'female' %}selected{% endif %}>Female</option>
+                </select>
+                <span class="error-message" id="gender-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="height_cm">Height (cm):</label>
+                <input type="number" id="height_cm" name="height_cm" step="0.1" min="50" max="250" value="{{ plan.height_cm }}" required>
+                <span class="error-message" id="height_cm-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="weight_kg">Weight (kg):</label>
+                <input type="number" id="weight_kg" name="weight_kg" step="0.1" min="20" max="300" value="{{ plan.weight_kg }}" required>
+                <span class="error-message" id="weight_kg-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="activity_level">Activity Level:</label>
+                <select id="activity_level" name="activity_level" required>
+                    <option value="">Select Activity Level</option>
+                    <option value="sedentary" {% if plan.activity_level == 'sedentary' %}selected{% endif %}>Sedentary (little or no exercise)</option>
+                    <option value="lightly_active" {% if plan.activity_level == 'lightly_active' %}selected{% endif %}>Lightly Active (light exercise/sports 1-3 days/week)</option>
+                    <option value="moderately_active" {% if plan.activity_level == 'moderately_active' %}selected{% endif %}>Moderately Active (moderate exercise/sports 3-5 days/week)</option>
+                    <option value="very_active" {% if plan.activity_level == 'very_active' %}selected{% endif %}>Very Active (hard exercise/sports 6-7 days a week)</option>
+                    <option value="extra_active" {% if plan.activity_level == 'extra_active' %}selected{% endif %}>Extra Active (very hard exercise/physical job)</option>
+                </select>
+                <span class="error-message" id="activity_level-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="dietary_preference">Dietary Preference:</label>
+                <select id="dietary_preference" name="dietary_preference">
+                    <option value="none" {% if plan.dietary_preference == 'none' %}selected{% endif %}>None</option>
+                    <option value="vegetarian" {% if plan.dietary_preference == 'vegetarian' %}selected{% endif %}>Vegetarian</option>
+                    <option value="vegan" {% if plan.dietary_preference == 'vegan' %}selected{% endif %}>Vegan</option>
+                    <option value="gluten_free" {% if plan.dietary_preference == 'gluten_free' %}selected{% endif %}>Gluten-Free</option>
+                    <option value="paleo" {% if plan.dietary_preference == 'paleo' %}selected{% endif %}>Paleo</option>
+                    <option value="keto" {% if plan.dietary_preference == 'keto' %}selected{% endif %}>Keto</option>
+                </select>
+                <span class="error-message" id="dietary_preference-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="fitness_goal">Fitness Goal:</label>
+                <select id="fitness_goal" name="fitness_goal" required>
+                    <option value="">Select Goal</option>
+                    <option value="lose_weight" {% if plan.fitness_goal == 'lose_weight' %}selected{% endif %}>Lose Weight</option>
+                    <option value="maintain_weight" {% if plan.fitness_goal == 'maintain_weight' %}selected{% endif %}>Maintain Weight</option>
+                    <option value="gain_muscle" {% if plan.fitness_goal == 'gain_muscle' %}selected{% endif %}>Gain Muscle</option>
+                </select>
+                <span class="error-message" id="fitness_goal-error"></span>
+            </div>
+            
+            <button type="submit">Update & Regenerate Plan</button>
+        </form>
+
+        <p class="text-center">
+            <a href="{{ url_for('view_plans') }}" class="btn btn-secondary">Cancel & Go Back to My Plans</a>
+        </p>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Updating and regenerating your plan...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

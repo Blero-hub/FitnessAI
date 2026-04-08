@@ -1,0 +1,516 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Container for content */
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Soft shadow */
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    color: #007bff; /* Primary blue color */
+    margin-bottom: 15px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #555;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #007bff;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Paragraphs and Lists */
+p {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: disc inside;
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+strong {
+    color: #0056b3; /* Darker blue for emphasis */
+}
+
+/* Form Styles */
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #28a745; /* Green submit button */
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Links/Buttons for Navigation */
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 20px 5px 0 5px; /* Added margin-left/right for multiple buttons */
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary { /* For logout button, and back button on edit page */
+    background-color: #6c757d;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger { /* For delete button */
+    background-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-small { /* For edit/delete buttons on plan cards */
+    padding: 6px 12px;
+    font-size: 0.85em;
+    margin: 5px 2px; /* Adjust margin for smaller buttons */
+}
+
+.btn-tertiary { /* New button style for Home link */
+    background-color: #17a2b8; /* Info blue */
+    color: white;
+}
+.btn-tertiary:hover {
+    background-color: #138496;
+}
+
+.btn-large { /* For prominent CTA buttons on home page */
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 10px; /* Adjust margin for larger buttons */
+}
+
+
+.auth-links {
+    margin-bottom: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Results Page Specifics */
+.results-section {
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+}
+
+.results-section h3 {
+    color: #007bff;
+    border-bottom: 1px dashed #cce5ff; /* Lighter dashed border */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Specific styles for view_plans.html, now in style.css */
+.plan-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.plan-card h3 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.plan-card p {
+    margin-bottom: 5px;
+}
+
+.plan-actions {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.plan-actions .btn {
+    margin-top: 0; /* Override default btn margin */
+    margin-bottom: 0;
+}
+
+.plan-card .plan-detail-toggle {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.plan-card .plan-detail-toggle:hover {
+    background-color: #0056b3;
+}
+.plan-details {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    border-top: 1px dashed #eee;
+    padding-top: 15px;
+}
+.plan-details .plan-section {
+    border: none; /* Override general .plan-section border if present */
+    padding: 0;
+}
+.plan-details h4 {
+    color: #333;
+    font-size: 1.1em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* --- Flash Messages Styling --- */
+/* This directly targets the 'ul' with class 'flashes' used in your HTML */
+.flashes {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;
+    margin: 20px auto; /* Centers the list horizontally and adds vertical space */
+    max-width: 600px; /* Adjust to match your container width if needed */
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* This targets each 'li' element within the 'ul.flashes' */
+.flashes li {
+    padding: 10px 15px;
+    margin-bottom: 10px; /* Space between multiple messages */
+    border: 1px solid transparent; /* Default border */
+    border-radius: 5px;
+    font-weight: bold;
+    color: #333; /* Default text color */
+}
+
+/* Specific styles for different flash categories */
+.success {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green text */
+    border-color: #c3e6cb;
+}
+
+.danger {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red text */
+    border-color: #f5c6cb;
+}
+
+.info {
+    background-color: #d1ecf1; /* Light blue */
+    color: #0c5460; /* Dark blue text */
+    border-color: #bee5eb;
+}
+
+.warning {
+    background-color: #fff3cd; /* Light yellow */
+    color: #856404; /* Dark yellow text */
+    border-color: #ffeeba;
+}
+/* --- End Flash Messages Styling --- */
+
+
+/* --- Loading Overlay Styles --- */
+.loading-overlay {
+    position: fixed; /* Cover the whole viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+    color: white;
+    font-size: 1.5em;
+    display: none; /* Hidden by default */
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #007bff; /* Blue spinner */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* Spinner animation */
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* --- End Loading Overlay Styles --- */
+
+
+/* Home Page Specifics */
+.home-page .main-header {
+    margin-bottom: 40px;
+    /* Added to ensure the banner has a background color and proper padding */
+    background-color: #007bff; /* Match header blue */
+    padding: 30px 20px; /* Add internal spacing */
+    border-radius: 8px; /* Match container border-radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.home-page .main-header h1 {
+    font-size: 2.2em; /* Slightly smaller for better fit */
+    color: white; /* Changed text color to white */
+    margin-bottom: 0; /* Remove default margin */
+    border-bottom: none; /* Remove border from h1 */
+    padding-bottom: 0; /* Remove padding from h1 */
+    display: flex; /* Make h1 a flex container to align text and emoji */
+    align-items: center; /* Vertically center items within h1 */
+    gap: 10px; /* Space between text and emoji */
+    text-align: center; /* Ensure text alignment is centered within its own flex item */
+}
+
+
+.home-page .tagline { /* This rule is no longer directly used for the banner text, but kept for other potential taglines */
+    font-size: 1.3em;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.home-page .intro-section,
+.home-page .features-section {
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.home-page .features-section ul {
+    list-style: none; /* Remove default bullet */
+    padding: 0;
+}
+
+.home-page .features-section li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.home-page .features-section li::before {
+    content: '✅'; /* Checkmark icon */
+    position: absolute;
+    left: 0;
+    color: #28a745; /* Green checkmark */
+}
+
+.home-page .cta-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.home-page .cta-section p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.home-page .main-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px 25px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    button[type="submit"] {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* --- START: UPDATED NAVIGATION STYLES FOR CONSISTENCY --- */
+header {
+    background-color: #007bff; /* Primary blue background */
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Ensure header takes full width and contains nav */
+}
+
+nav {
+    display: flex; /* Use flexbox for navigation items */
+    justify-content: space-between; /* Pushes items to the ends */
+    align-items: center; /* Vertically centers items */
+    max-width: 1200px; /* Max width for your navigation bar */
+    margin: 0 auto; /* Center the nav bar itself */
+    padding: 0 20px; /* Padding on sides */
+}
+
+.nav-left .logo {
+    color: #fff;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 0; /* Add some padding for clickability */
+}
+
+.nav-right {
+    display: flex; /* Make nav-right a flex container too for its links */
+    gap: 25px; /* Space between the links in nav-right */
+}
+
+.nav-right a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px 0; /* Add some padding for clickability */
+}
+
+.nav-right a:hover {
+    color: #e2e6ea;
+    transform: translateY(-2px); /* Subtle hover effect */
+}
+
+/* Style for active navigation link */
+.nav-right a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 3px;
+}
+/* --- END: UPDATED NAVIGATION STYLES FOR CONSISTENCY --- */

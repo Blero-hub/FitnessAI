@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personalized Plan Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Personalized Plan Results 🎉</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="results-section">
+            <h2>Your Input</h2>
+            <p><strong>Age:</strong> {{ user_data.age }} years</p>
+            <p><strong>Gender:</strong> {{ user_data.gender | capitalize }}</p>
+            <p><strong>Height:</strong> {{ user_data.height_cm }} cm</p>
+            <p><strong>Weight:</strong> {{ user_data.weight_kg }} kg</p>
+            <p><strong>Activity Level:</strong> {{ user_data.activity_level | replace('_', ' ') | capitalize }}</p>
+            <p><strong>Dietary Preference:</strong> {{ user_data.dietary_preference | capitalize }}</p>
+            <p><strong>Fitness Goal:</strong> {{ user_data.fitness_goal | replace('_', ' ') | capitalize }}</p>
+        </div>
+
+        <div class="results-section">
+            <h2>BMI Calculation</h2>
+            <p><strong>Your BMI:</strong> {{ bmi }}</p>
+            <p><strong>BMI Category:</strong> {{ bmi_category }}</p>
+            <p><strong>Estimated Daily Calorie Needs (TDEE):</strong> {{ tdee }} calories</p>
+        </div>
+
+        <div class="results-section">
+            {{ meal_plan | safe }}
+        </div>
+
+        <div class="results-section">
+            {{ workout_plan | safe }}
+        </div>
+
+        <p class="text-center">
+            <a href="{{ url_for('generate_plan_form') }}" class="btn">Generate Another Plan</a>
+            <a href="{{ url_for('view_plans') }}" class="btn">View My Saved Plans</a>
+            <a href="{{ url_for('home') }}" class="btn btn-tertiary">Home</a>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Database files (if you're using SQLite directly in the project folder)
+*.sqlite
+*.db
+
+# Environment variables (Crucial for API keys and other secrets)
+.env
+
+# Flask specific (if using a default instance folder)
+instance/
+
+# IDE specific files (e.g., VS Code)
+.vscode/
